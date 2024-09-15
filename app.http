@@ -1,0 +1,6 @@
+### primer get, hola mundo
+GET http://localhost:3000
+
+### get cats
+GET http://localhost:3000/cats
+
