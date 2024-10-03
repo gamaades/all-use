@@ -9,6 +9,7 @@ GET http://localhost:3000/cats/docs
 
 ### post cats
 POST http://localhost:3000/cats
+Content-Type: application/json
 
 {
     "name":"Tom",
