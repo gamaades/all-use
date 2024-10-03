@@ -1,0 +1,9 @@
+
+$ npm i -g @nestjs/cli
+$ nest new project-name
+
+controlador CRUD con la validación en construcción
+$ nest g resource [name]
+
+Para crear un controlador usando el CLI
+$ nest g controller [name]
