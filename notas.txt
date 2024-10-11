@@ -1,9 +1,23 @@
+Con el siguiente comando se instala nestjs 
+$ npm i -g @nestjs/
 
-$ npm i -g @nestjs/cli
+Con el siguiente comando creamos un nuevo proyecto
 $ nest new project-name
+
+configurar lo iconos
+precionar F1 y escribir "Open Workspace Settings (JSON)", se creara una carpeta con un archivo llamado settings.json y ahi agregar la siguiente linea para configurar los iconos: ""material-icon-theme.activeIconPack": "nest""
 
 controlador CRUD con la validación en construcción
 $ nest g resource [name]
 
 Para crear un controlador usando el CLI
 $ nest g controller [name]
+
+Para crear un servicio usando el CLI, simplemente ejecute
+$ nest g service cats
+
+Para crear un módulo usando el CLI, simplemente ejecute
+$ nest g module cats
+
+La biblioteca Zod le permite crear esquemas de una manera sencilla, con una API legible.
+$ npm install --save zod

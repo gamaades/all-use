@@ -5,7 +5,7 @@ GET http://localhost:3000
 GET http://localhost:3000/cats
 
 ### get cats
-GET http://localhost:3000/cats/docs
+GET http://localhost:3000/cats/prueba
 
 ### post cats
 POST http://localhost:3000/cats
@@ -25,3 +25,6 @@ POST http://localhost:3000/dogs
 
 ### get dogs por id
 GET http://localhost:3000/dogs/1a
+
+### get tasks
+GET http://localhost:3000/tasks

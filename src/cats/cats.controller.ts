@@ -3,8 +3,10 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
   HttpStatus,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   Query,
@@ -14,24 +16,38 @@ import { Response } from 'express'; // Importar Response desde express
 import { CreateCatDto } from './dto/crear-cat.dto';
 import { UpdateCatDto } from './dto/update-fish.dto';
 import { ListAllEntities } from './entities/cat.entity';
+import { CatsService } from './cats.service';
+import { Cat } from './interfaces/cat.interface';
 
 @Controller('cats')
 export class CatsController {
+  constructor(private catsService: CatsService) {}
+
   @Post()
-  create(@Body() createCatDto: CreateCatDto, @Res() res: Response) {
-    console.log(createCatDto);
-    res.status(HttpStatus.CREATED).send(createCatDto);
-    return 'This action adds a new cat';
+  async create(@Body() createCatDto: CreateCatDto) {
+    this.catsService.create(createCatDto);
   }
 
   @Get()
-  findAll(@Query() query: ListAllEntities, @Res() res: Response) {
-    res.status(HttpStatus.OK).json([{ name: 'Tom', ega: 20, breed: 'Not' }]);
-    return `This action returns all cats (limit: ${query.limit} items)`;
+  async findAll(): Promise<Cat[]> {
+    try {
+      return this.catsService.findAll();
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.FORBIDDEN,
+          error: 'This is a custom message',
+        },
+        HttpStatus.FORBIDDEN,
+        {
+          cause: error,
+        },
+      );
+    }
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', ParseIntPipe) id: number) {
     return `This action returns a #${id} cat`;
   }
 
