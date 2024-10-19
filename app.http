@@ -28,3 +28,9 @@ GET http://localhost:3000/dogs/1a
 
 ### get tasks
 GET http://localhost:3000/tasks
+
+### get formulario
+GET http://localhost:3000/api/formulario
+
+### get formulario por query params
+GET http://localhost:3000/api/formulario?id=d902be06-8bef-11ef-acb9-2d966b55690e&correo=ing.gustavo.manan@gmail.com&nombre=Gustavo&apellido=Mañán

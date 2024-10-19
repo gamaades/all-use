@@ -7,9 +7,11 @@ import { FishModule } from './fish/fish.module';
 import { CatsService } from './cats/cats.service';
 import { CatsModule } from './cats/cats.module';
 import { TasksModule } from './tasks/tasks.module';
+import { SharedModule } from './shared/shared.module';
+import { FormularioModule } from './formulario/formulario.module';
 
 @Module({
-  imports: [FishModule, CatsModule, TasksModule],
+  imports: [SharedModule, FishModule, CatsModule, TasksModule, FormularioModule],
   controllers: [AppController, CatsController, DogsController],
   providers: [AppService, CatsService],
 })

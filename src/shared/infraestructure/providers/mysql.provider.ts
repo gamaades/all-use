@@ -21,9 +21,14 @@ export class MySQLProvider implements IMySQLProvider {
       if (parametros.length) parametros_string = parametros_string.slice(0, -1);
 
       // MySQL también usa el mismo formato de llamada de procedimientos almacenados
-      let query = `CALL ${procedimiento}(${parametros_string})`;
+      const query = `CALL ${procedimiento}(${parametros_string})`;
 
-      return await this.dataSource.query(query);
+      const rs = await this.dataSource.query(query);
+
+      if (rs && Array.isArray(rs) && rs.length > 0) {
+        return rs[0]; // Devolver solo el arreglo con datos
+      }
+      return []; // Si no hay datos, devolver un arreglo vacío
     } catch (err: any) {
       throw new Error(
         `MySQLProvider | ejecutarSP | procedimiento="${procedimiento}" parametros="${parametros.join(', ')}" | error=${err.message}`,
